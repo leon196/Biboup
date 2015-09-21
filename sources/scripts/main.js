@@ -4,6 +4,10 @@ var timeStarted = new Date() / 1000;
 var timeElapsed = 0;
 var draw = new Draw();
 var mouse = { x: 0, y: 0 };
+var keyLeft = false;
+var keyRight = false;
+var keyUp = false;
+var keyDown = false;
 
 function init ()
 {
@@ -15,6 +19,8 @@ function init ()
   canvasElement.addEventListener('mousedown', onMouseDown);
   canvasElement.addEventListener('mouseup', onMouseUp);
   canvasElement.addEventListener('mousemove', onMouseMove);
+  document.addEventListener("keydown", onKeyDown);
+	document.addEventListener("keyup", onKeyUp);
 
   // Start main loop
   requestAnimationFrame(update);
@@ -47,6 +53,16 @@ function onMouseMove (event)
 {
   mouse.x = event.clientX;
   mouse.y = event.clientY;
+}
+
+function onKeyDown (event)
+{
+
+}
+
+function onKeyUp (event)
+{
+  console.log(String.fromCharCode(event.keyCode) + ' : ' + event.keyCode);
 }
 
 document.body.onload = init
