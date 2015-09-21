@@ -24,9 +24,9 @@ function update ()
 {
   timeElapsed = new Date() / 1000 - timeStarted;
 
-  draw.Clear();
+  draw.clear();
 
-  draw.Circle(mouse.x, mouse.y, 100, "#ff403c");
+  draw.circle(mouse.x, mouse.y, 100, "#ff403c");
 
   // Maintain loop
   requestAnimationFrame(update);
