@@ -26,6 +26,7 @@ function update ()
 
   draw.clear();
 
+  draw.box(0, 0, canvasElement.width, canvasElement.height, "#3f3f3c");
   draw.circle(mouse.x, mouse.y, 100, "#ff403c");
 
   // Maintain loop
