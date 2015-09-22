@@ -2,13 +2,17 @@
 var canvasElement = document.getElementById("container");
 var timeStarted = new Date() / 1000;
 var timeElapsed = 0;
-var draw = new Draw();
+var draw;
+var player;
 
 function init ()
 {
   // Set fullscreen
   canvasElement.width = window.innerWidth;
   canvasElement.height = window.innerHeight;
+
+  draw = new Draw();
+  player = new Player();
 
   // Events
   canvasElement.addEventListener('mousedown', onMouseDown);
@@ -28,7 +32,12 @@ function update ()
   draw.clear();
 
   draw.box(0, 0, canvasElement.width, canvasElement.height, "#3f3f3c");
+
+  // Circle mouse
   draw.circle(mouse.x, mouse.y, 100, "#ff403c");
+
+  player.update();
+  player.draw();
 
   // Maintain loop
   requestAnimationFrame(update);

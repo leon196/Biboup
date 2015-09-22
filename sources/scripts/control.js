@@ -23,10 +23,29 @@ function onMouseMove (event)
 
 function onKeyDown (event)
 {
-
+  switch (event.keyCode) {
+    // A
+    case 65: keyLeft = true; break;
+    // D
+    case 68: keyRight = true; break;
+    // W
+    case 87: keyUp = true; break;
+    // S
+    case 83: keyDown = true; break;
+  }
 }
 
 function onKeyUp (event)
 {
   console.log(String.fromCharCode(event.keyCode) + ' : ' + event.keyCode);
+  switch (event.keyCode) {
+    // A
+    case 65: keyLeft = false; break;
+    // D
+    case 68: keyRight = false; break;
+    // W
+    case 87: keyUp = false; break;
+    // S
+    case 83: keyDown = false; break;
+  }
 }
