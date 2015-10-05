@@ -18,6 +18,10 @@ var Player = function ()
     } else if (keyDown) {
       this.y += this.speedMove;
     }
+
+    // Borders collision
+    this.x = Math.min(canvasElement.width, Math.max(0, this.x));
+    this.y = Math.min(canvasElement.height, Math.max(0, this.y));
   };
 
   this.draw = function ()
