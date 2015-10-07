@@ -1,5 +1,7 @@
 
 var mouse = { x: 0, y: 0 };
+var mouseDown = false;
+
 var keyLeft = false;
 var keyRight = false;
 var keyUp = false;
@@ -7,12 +9,12 @@ var keyDown = false;
 
 function onMouseDown (event)
 {
-
+  mouseDown = true;
 }
 
 function onMouseUp (event)
 {
-
+  mouseDown = false;
 }
 
 function onMouseMove (event)
