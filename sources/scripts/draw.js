@@ -16,6 +16,28 @@ var Draw = function ()
     this.context2d.fillRect(x, y, width, height);
   };
 
+  this.arrow2 = function (x, y, direction, length, thickness)
+  {
+    this.context2d.beginPath();
+    this.context2d.fillStyle = "#ff00cc";
+
+    var droite = { x: direction.y, y: -direction.x }
+    var x2 = x + direction.x * length;
+    var y2 = y + direction.y * length;
+
+    this.context2d.moveTo(x + droite.x * thickness, y + droite.y * thickness);
+    this.context2d.lineTo(x2 + droite.x * thickness, y2 + droite.y * thickness);
+
+    this.context2d.lineTo(x2 + droite.x * thickness * 2, y2 + droite.y * thickness * 2);
+    this.context2d.lineTo(x2 + direction.x * 30, y2 + direction.y * 30);
+    this.context2d.lineTo(x2 - droite.x * thickness * 2, y2 - droite.y * thickness * 2);
+
+    this.context2d.lineTo(x2 - droite.x * thickness, y2 - droite.y * thickness);
+    this.context2d.lineTo(x - droite.x * thickness, y - droite.y * thickness);
+
+    this.context2d.fill();
+  }
+
   this.arrow = function (x, y, x2, y2, thickness)
   {
     this.context2d.beginPath();
@@ -30,14 +52,27 @@ var Draw = function ()
     this.context2d.moveTo(x + droite.x * thickness, y + droite.y * thickness);
     this.context2d.lineTo(x2 + droite.x * thickness, y2 + droite.y * thickness);
 
-    this.context2d.lineTo(x2 + droite.x * thickness * 8, y2 + droite.y * thickness * 8);
+    this.context2d.lineTo(x2 + droite.x * thickness * 2, y2 + droite.y * thickness * 2);
     this.context2d.lineTo(x2 + direction.x * 30, y2 + direction.y * 30);
-    this.context2d.lineTo(x2 - droite.x * thickness * 8, y2 - droite.y * thickness * 8);
+    this.context2d.lineTo(x2 - droite.x * thickness * 2, y2 - droite.y * thickness * 2);
 
     this.context2d.lineTo(x2 - droite.x * thickness, y2 - droite.y * thickness);
     this.context2d.lineTo(x - droite.x * thickness, y - droite.y * thickness);
 
     this.context2d.fill();
+  }
+
+  this.text = function (text, x, y, fontSize, color)
+  {
+
+    // condition ? valueIfTrue : valueIfFalse
+    fontSize = typeof fontSize !== "undefined" ? fontSize : 30;
+    color = typeof color !== "undefined" ? color : "#000000";
+    
+    this.context2d.fillStyle = color;
+    this.context2d.font = fontSize + "px Arial";
+    this.context2d.textAlign = 'center';
+    this.context2d.fillText(text, x, y);
   }
 
   this.circle = function (x, y, radius, color)

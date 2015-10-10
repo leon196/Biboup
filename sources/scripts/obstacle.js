@@ -8,6 +8,8 @@ var Obstacle = function ()
   this.direction = { x: 1, y: 0 };
   this.speed = 2;
 
+  this.arrowList = [];
+
   this.timeCollisionStart = 0;
   this.timeCollisionDelay = 1;
 
@@ -24,6 +26,13 @@ var Obstacle = function ()
     this.timeCollisionStart = timeElapsed;
   }
 
+  this.addArrow = function (arrow)
+  {
+    this.arrowList.push(arrow);
+    arrow.offset.x = arrow.x - this.x;
+    arrow.offset.y = arrow.y - this.y;
+  }
+
   this.update = function ()
   {
     this.x += this.direction.x * this.speed;
@@ -33,6 +42,15 @@ var Obstacle = function ()
     {
       var ratio = (timeElapsed - this.timeCollisionStart) / this.timeCollisionDelay;
       this.size = 60 + Math.sin(ratio * 10) * 5 * (1 - ratio)
+    }
+
+    for (var i = 0; i < this.arrowList.length; ++i)
+    {
+      var arrow = this.arrowList[i];
+      arrow.x = this.x + arrow.offset.x;
+      arrow.y = this.y + arrow.offset.y;
+
+      //spawnParticle(1, arrow);
     }
   }
 
